@@ -1,9 +1,5 @@
-bgbranch="\e[48;5;52m"
-bgdir="\e[48;5;19m"
-clrcolor="\e[0m"
-
 parse_git_branch(){
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's|* \(.*\)|(\1)|'
 }
 
 parse_dir() {
