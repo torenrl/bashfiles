@@ -10,8 +10,8 @@ parse_dir() {
 
 export PS1="╭─(\e[94m\u@\h\e[0m)[\$(parse_dir)]\e[33m\$(parse_git_branch)\e[0m\n╰> "
 
-if [ -f .aliases ];
+if [ -f ~/bashfiles/.aliases ];
 then
-    source .aliases
+    source ~/bashfiles/.aliases
 fi
 
