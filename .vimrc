@@ -5,13 +5,16 @@ syntax on
 set number
 
 " set shift width to 4 spaces.
-set shiftwidth=4
+set shiftwidth=2
 
 " Set tab width to 4 columns.
-set tabstop=4
+set tabstop=2
 
 " Use space characters instead of tabs.
 set expandtab
+
+" Autoindent option
+set autoindent
 
 " Do not save backup files.
 set nobackup
