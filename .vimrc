@@ -1,3 +1,6 @@
+" Color scheme
+:color desert
+
 " Turn syntax highlighting on.
 syntax on
 

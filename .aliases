@@ -1,2 +1,5 @@
 alias ll="ls -lah"
 alias la="ls -a"
+
+alias vlog=vlog.exe
+alias vsim=vsim.exe

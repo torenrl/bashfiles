@@ -5,19 +5,29 @@ parse_git_branch(){
 }
 
 parse_dir() {
-	pwd 2> /dev/null | sed -E -e "s|^$HOME|~|" -e 's|.*(/[^/]*/[^/]*)|..\1|' 
+  if [ -v WS ]
+  then
+    parse_workspace_in_pwd 
+    pwd 2> /dev/null | sed -E -e "s|^$WS||" -e "s|^$HOME|~|" -e 's|.*(/[^/]*/[^/]*)|..\1|' 
+  else
+    pwd 2> /dev/null | sed -E -e "s|^$HOME|~|" -e 's|.*(/[^/]*/[^/]*)|..\1|' 
+  fi
 }
 
 parse_workspace() {
-  echo "$VC_WORKSPACE" | sed -E -e "s|.*/([^/]*)|\1|"
+   echo -n "$WS" | sed -E -e "s|.*/([^/]*)|\1|"
 }
 
 parse_workspace_in_pwd() {
-  if [[ $PWD/ = $VC_WORKSPACE/* ]];
+  if [[ $PWD/ = $WS/* ]];
   then
-    echo "\e[32m\$(parse_workspace)/\e[0m"
+    echo -en '\033[0;32m'
+    parse_workspace
+    echo -en '/\033[0m'
   else
-    echo "\e[31m\$(parse_workspace) \e[0m"
+    echo -en '\033[0;31m'
+    parse_workspace
+    echo -en ' \033[0m'
   fi
 }
 
